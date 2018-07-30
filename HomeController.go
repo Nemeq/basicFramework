@@ -12,15 +12,15 @@ func (hc *HomeController) RegisterRoutes(rh *routeHandler) {
 
 }
 
-func (hc *HomeController) Index(sctx *SecContext) {
+func (hc *HomeController) Index(sctx *secContext) {
 	sctx.OkTxt("Return message")
 }
 
-func (hc *HomeController) GetJson(sctx *SecContext) {
+func (hc *HomeController) GetJson(sctx *secContext) {
 	sctx.Ok("Return message")
 }
 
-func (hc *HomeController) GetError(sctx *SecContext) {
+func (hc *HomeController) GetError(sctx *secContext) {
 	t := 2
 	p := 0
 	x := t / p

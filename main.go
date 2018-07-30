@@ -14,7 +14,7 @@ func main() {
 	log.SetFormatter(&log.TextFormatter{})
 
 	rh := InitializeControllers()
-	handler := HandlerBuilder{}
+	handler := handlerBuilder{}
 
 	handler.Use(LogRequest)
 	handler.Use(rh.BuildRouter())

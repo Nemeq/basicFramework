@@ -4,20 +4,20 @@ import (
 	"github.com/valyala/fasthttp"
 )
 
-type HandlerBuilder struct {
+type handlerBuilder struct {
 	midwares   []func(ctx *fasthttp.RequestCtx)
 	errorwares []func(ctx *fasthttp.RequestCtx, errInterface interface{})
 }
 
-func (h *HandlerBuilder) Use(midware func(ctx *fasthttp.RequestCtx)) {
+func (h *handlerBuilder) Use(midware func(ctx *fasthttp.RequestCtx)) {
 	h.midwares = append(h.midwares, midware)
 }
 
-func (h *HandlerBuilder) UsePostRequest(midware func(ctx *fasthttp.RequestCtx, errInterface interface{})) {
+func (h *handlerBuilder) UsePostRequest(midware func(ctx *fasthttp.RequestCtx, errInterface interface{})) {
 	h.errorwares = append(h.errorwares, midware)
 }
 
-func (h *HandlerBuilder) Build() func(ctx *fasthttp.RequestCtx) {
+func (h *handlerBuilder) Build() func(ctx *fasthttp.RequestCtx) {
 	return func(ctx *fasthttp.RequestCtx) {
 		defer func() {
 			if r := recover(); r != nil {

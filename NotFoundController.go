@@ -9,7 +9,7 @@ func (hc *NotFoundController) RegisterRoutes(rh *routeHandler) {
 	})
 }
 
-func (hc *NotFoundController) Index(sctx *SecContext) {
+func (hc *NotFoundController) Index(sctx *secContext) {
 	sctx.NotFoundTxt("Page not found")
 }
 

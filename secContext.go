@@ -6,11 +6,11 @@ import (
 	"github.com/valyala/fasthttp"
 )
 
-type SecContext struct {
+type secContext struct {
 	ctx *fasthttp.RequestCtx
 }
 
-func (sc *SecContext) Ok(obj interface{}) {
+func (sc *secContext) Ok(obj interface{}) {
 	jsonObj, err := json.Marshal(obj)
 	if err != nil {
 		panic("Error in Serialization")
@@ -20,15 +20,15 @@ func (sc *SecContext) Ok(obj interface{}) {
 	sc.ctx.SetContentType("application/json")
 }
 
-func (sc *SecContext) OkTxt(txt string) {
+func (sc *secContext) OkTxt(txt string) {
 	sc.response(txt, fasthttp.StatusOK)
 }
 
-func (sc *SecContext) NotFoundTxt(txt string) {
+func (sc *secContext) NotFoundTxt(txt string) {
 	sc.response(txt, fasthttp.StatusNotFound)
 }
 
-func (sc *SecContext) response(txt string, statusCode int) {
+func (sc *secContext) response(txt string, statusCode int) {
 	sc.ctx.SetBody([]byte(txt))
 	sc.ctx.SetStatusCode(statusCode)
 }

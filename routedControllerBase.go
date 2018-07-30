@@ -4,8 +4,8 @@ type RoutedController interface {
 	RegisterRoutes(rh *routeHandler)
 }
 
-const (  // Http methods
-	GET = "GET"
+const ( // Http methods
+	GET  = "GET"
 	POST = "POST"
-	PUT = "PUT"
+	PUT  = "PUT"
 )
